@@ -1,0 +1,63 @@
+body, html {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.calendars {
+    display: flex;
+    flex-direction: row;
+}
+
+.calendar {
+    display: flex;
+    margin: 10px;
+    padding: 2px;
+    box-shadow: 1px 0 6px #F1F1F1;
+}
+
+.cell {
+    font-size: 12px;
+    font-weight: 500;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+}
+
+.cell.day {
+    color: #212121;
+}
+
+.cell.title,
+.cell.other-month {
+    color: #757575;
+}
+
+.cell.today {
+    background-color: #4285f4;
+    color: #ffffff;
+}
+
+.cell.today:hover {
+    background-color: #4285f4;
+}
+
+.column {
+    background: #fff;
+    text-align: center;
+}
+
+.cell:hover {
+    transition: background-color 000ms linear;
+}
+
+.day:hover {
+    background-color: #e0e0e0;
+}
+
+.day.other-month:hover {
+    background-color: #f5f5f5;
+}
