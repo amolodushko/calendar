@@ -51,7 +51,7 @@ body, html {
 }
 
 .cell:hover {
-    transition: background-color 000ms linear;
+    transition: background-color 100ms linear;
 }
 
 .day:hover {
