@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <link rel="stylesheet" type="text/css" href="../source/css/calendar.css">
+</head>
+<body>
+<div class="calendars">
+    <div id="calendar_monday"></div>
+    <div id="calendar_sunday"></div>
+</div>
+
+</body>
+
+<script src="../source/js/calendar.js"></script>
+<script>
+    let calendar1 = new Calendar({targetId: 'calendar_monday'}),
+        calendar2 = new Calendar({firstDayOfTheWeek: 0, targetId: 'calendar_sunday'});
+
+    calendar1.drawCalendar();
+    calendar2.drawCalendar();
+</script>
+</html>
