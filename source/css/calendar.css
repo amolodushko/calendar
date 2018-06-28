@@ -2,7 +2,18 @@ body, html {
     font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+@font-face {
+    font-family: 'Material Icons Extended';
+    font-style: normal;
+    font-weight: 400;
+    src: url(//fonts.gstatic.com/s/materialiconsextended/v39/kJEjBvgX7BgnkSrUwT8UnLVc38YydejYY-oE_LvJ.woff2) format('woff2');
+}
+
 .calendars {
+    display: flex;
+}
+
+.calendar_body {
     display: flex;
     flex-direction: row;
 }
@@ -12,6 +23,7 @@ body, html {
     margin: 10px;
     padding: 2px;
     box-shadow: 1px 0 6px #F1F1F1;
+    flex-direction: column;
 }
 
 .cell {
@@ -24,7 +36,6 @@ body, html {
     justify-content: center;
     align-items: center;
     display: flex;
-    border-radius: 50%;
 }
 
 .cell.day {
@@ -50,14 +61,42 @@ body, html {
     text-align: center;
 }
 
-.cell:hover {
+.button {
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.button:hover {
+    background-color: #e0e0e0;
     transition: background-color 100ms linear;
 }
 
-.day:hover {
-    background-color: #e0e0e0;
+.button.other-month:hover {
+    background-color: #f5f5f5;
 }
 
-.day.other-month:hover {
-    background-color: #f5f5f5;
+.calendar_header {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    color: #757575;
+    padding: 10px;
+}
+
+.month_name {
+    flex: 1;
+}
+
+.buttons-wrapper {
+    display: flex;
+}
+
+.navigation_button {
+    font-family: 'Material Icons Extended';
+    padding: 3px;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    user-select: none
 }

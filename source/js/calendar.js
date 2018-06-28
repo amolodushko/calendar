@@ -7,6 +7,20 @@ const DAYS = {
         FRIDAY: 'FRIDAY',
         SATURDAY: 'SATURDAY'
     },
+    MONTH = {
+        JANUARY: 'JANUARY',
+        FEBRUARY: 'FEBRUARY',
+        MARCH: 'MARCH',
+        APRIL: 'APRIL',
+        MAY: 'MAY',
+        JUNE: 'JUNE',
+        JULY: 'JULY',
+        AUGUST: 'AUGUST',
+        SEPTEMBER: 'SEPTEMBER',
+        OCTOBER: 'OCTOBER',
+        NOVEMBER: 'NOVEMBER',
+        DECEMBER: 'DECEMBER'
+    },
     FIRST_DAY_OF_THE_WEEK = 1,
     CALENDAR_SIZE = 42,
     WEEK_MAP = {
@@ -39,6 +53,56 @@ const DAYS = {
             TITLE: 'SA'
         }
     },
+    YEAR_MAP = {
+        0: {
+            value: MONTH.JANUARY,
+            TITLE: 'January'
+        },
+        1: {
+            value: MONTH.FEBRUARY,
+            TITLE: 'February'
+        },
+        2: {
+            value: MONTH.MARCH,
+            TITLE: 'March'
+        },
+        3: {
+            value: MONTH.APRIL,
+            TITLE: 'April'
+        },
+        4: {
+            value: MONTH.MAY,
+            TITLE: 'May'
+        },
+        5: {
+            value: MONTH.JUNE,
+            TITLE: 'June'
+        },
+        6: {
+            value: MONTH.JULY,
+            TITLE: 'July'
+        },
+        7: {
+            value: MONTH.AUGUST,
+            TITLE: 'August'
+        },
+        8: {
+            value: MONTH.SEPTEMBER,
+            TITLE: 'September'
+        },
+        9: {
+            value: MONTH.OCTOBER,
+            TITLE: 'October'
+        },
+        10: {
+            value: MONTH.NOVEMBER,
+            TITLE: 'November'
+        },
+        11: {
+            value: MONTH.DECEMBER,
+            TITLE: 'December'
+        }
+    },
     CALENDAR_CLS = 'calendar';
 
 class Calendar {
@@ -53,6 +117,8 @@ class Calendar {
         this.today.setHours(0, 0, 0, 0);
 
         this.currentDate = new Date();
+        this.runPrevMonth = this.runPrevMonth.bind(this);
+        this.runNextMonth = this.runNextMonth.bind(this);
     }
 
     initCalendar(newDate) {
@@ -133,7 +199,23 @@ class Calendar {
         const target = document.getElementById(targetId || this.targetId);
 
         target.classList.add(CALENDAR_CLS);
-        target.innerHTML = html;
+
+        target.innerHTML = `${this.drawHeader()} <div class="calendar_body"> ${html} </div>`;
+        let prev = target.querySelector('.prev'),
+            next = target.querySelector('.next');
+
+        prev.onclick = this.runPrevMonth;
+        next.onclick = this.runNextMonth;
+    }
+
+    drawHeader() {
+        return `<div class="calendar_header">
+                    <div class="month_name">${YEAR_MAP[this.currentDate.getMonth()].TITLE} ${this.currentDate.getFullYear()} </div>
+                    <div class="buttons-wrapper">
+                        <div class="prev navigation_button button"></div>
+                        <div class="next navigation_button button"></div>
+                    </div>
+                </div>`;
     }
 
     drawColumn(monthMap, key) {
@@ -144,7 +226,7 @@ class Calendar {
         return Object.keys(map)
             .sort((a, b) => map[a].month - map[b].month)
             .map(key => {
-                let cls = ['cell', 'day'];
+                let cls = ['cell', 'day', 'button'];
 
                 if (!map[key].targetMonth) {
                     cls.push('other-month');
