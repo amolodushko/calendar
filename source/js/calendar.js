@@ -24,81 +24,81 @@ const DAYS = {
     FIRST_DAY_OF_THE_WEEK = 1,
     CALENDAR_SIZE = 42,
     WEEK_MAP = {
-        0: {
+        '0': {
             value: DAYS.SUNDAY,
             TITLE: 'SU'
         },
-        1: {
+        '1': {
             value: DAYS.MONDAY,
             TITLE: 'MO'
         },
-        2: {
+        '2': {
             value: DAYS.TUESDAY,
             TITLE: 'TU'
         },
-        3: {
+        '3': {
             value: DAYS.WEDNESDAY,
             TITLE: 'WE'
         },
-        4: {
+        '4': {
             value: DAYS.THURSDAY,
             TITLE: 'TH'
         },
-        5: {
+        '5': {
             value: DAYS.FRIDAY,
             TITLE: 'FR'
         },
-        6: {
+        '6': {
             value: DAYS.SATURDAY,
             TITLE: 'SA'
         }
     },
     YEAR_MAP = {
-        0: {
+        '0': {
             value: MONTH.JANUARY,
             TITLE: 'January'
         },
-        1: {
+        '1': {
             value: MONTH.FEBRUARY,
             TITLE: 'February'
         },
-        2: {
+        '2': {
             value: MONTH.MARCH,
             TITLE: 'March'
         },
-        3: {
+        '3': {
             value: MONTH.APRIL,
             TITLE: 'April'
         },
-        4: {
+        '4': {
             value: MONTH.MAY,
             TITLE: 'May'
         },
-        5: {
+        '5': {
             value: MONTH.JUNE,
             TITLE: 'June'
         },
-        6: {
+        '6': {
             value: MONTH.JULY,
             TITLE: 'July'
         },
-        7: {
+        '7': {
             value: MONTH.AUGUST,
             TITLE: 'August'
         },
-        8: {
+        '8': {
             value: MONTH.SEPTEMBER,
             TITLE: 'September'
         },
-        9: {
+        '9': {
             value: MONTH.OCTOBER,
             TITLE: 'October'
         },
-        10: {
+        '10': {
             value: MONTH.NOVEMBER,
             TITLE: 'November'
         },
-        11: {
+        '11': {
             value: MONTH.DECEMBER,
             TITLE: 'December'
         }
@@ -108,8 +108,7 @@ const DAYS = {
 class Calendar {
     constructor(params) {
         let initialParams = params || {};
-        this.firstDayOfTheWeek = initialParams.hasOwnProperty('firstDayOfTheWeek')
-            ? initialParams.firstDayOfTheWeek
+        this.firstDayOfTheWeek = initialParams.hasOwnProperty('firstDayOfTheWeek') ? initialParams.firstDayOfTheWeek
             : FIRST_DAY_OF_THE_WEEK;
 
         this.targetId = initialParams.targetId || '';
